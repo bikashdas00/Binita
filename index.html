@@ -1,149 +1,251 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-<meta charset="UTF-8">
-<title>Bikash ❤️ Anita</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bikash ❤️ Anita</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;500;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
-<style>
-body {
-  margin:0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #000000, #0f2027);
-  color: white;
-  text-align:center;
-}
+  <style>
+    :root {
+      --primary-color: #ff4d6d;
+      --secondary-color: #00c6ff;
+      --glass-bg: rgba(255, 255, 255, 0.1);
+    }
 
-.container {
-  padding: 30px;
-}
+    body {
+      margin: 0;
+      font-family: 'Hind Siliguri', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      text-align: center;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
 
-h1 {
-  font-size: 45px;
-  color:#00c6ff;
-}
+    /* Floating Hearts Background */
+    .hearts {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
 
-button {
-  margin: 8px;
-  padding: 12px 20px;
-  border:none;
-  border-radius: 20px;
-  background:#00c6ff;
-  color:black;
-  cursor:pointer;
-  transition:0.3s;
-}
-button:hover {
-  background:white;
-}
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 40px 20px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+    }
 
-img {
-  border-radius:15px;
-  margin:10px;
-}
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #ff4d6d, #00c6ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
 
-.section {
-  display:none;
-  margin-top:20px;
-}
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 5px #ff4d6d); }
+      to { filter: drop-shadow(0 0 20px #00c6ff); }
+    }
 
-</style>
+    #typing {
+      font-size: 1.2rem;
+      height: 25px;
+      color: #ddd;
+      margin-bottom: 30px;
+    }
+
+    /* Button Styling */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 50px;
+      background: var(--glass-bg);
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    button:hover {
+      background: var(--primary-color);
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4);
+    }
+
+    /* Section Styling */
+    .section {
+      display: none;
+      margin-top: 40px;
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    img {
+      border-radius: 20px;
+      margin: 15px;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      transition: 0.5s;
+      filter: grayscale(30%);
+    }
+
+    img:hover {
+      filter: grayscale(0%);
+      transform: rotate(3deg) scale(1.05);
+      border-color: var(--primary-color);
+    }
+
+    .story-card {
+      text-align: left;
+      line-height: 1.8;
+      padding: 20px;
+    }
+
+    hr { border: 0; border-top: 1px solid rgba(255, 255, 255, 0.1); margin: 20px 0; }
+
+    b { color: var(--secondary-color); }
+
+  </style>
 </head>
-
 <body>
 
+<div class="hearts" id="heartContainer"></div>
+
 <div class="container">
+  <h1>Anita & Bikash</h1>
+  <p id="typing"></p>
 
-<h1>Anita & Bikash are like Tom and jerry💙</h1>
-<p id="typing"></p>
+  <div class="btn-group">
+    <button onclick="showSection('love')">Love 💖</button>
+    <button onclick="showSection('miss')">Miss You 😢</button>
+    <button onclick="showSection('promise')">Promise 🤝</button>
+    <button onclick="showSection('quotes')">Quotes 🌹</button>
+    <button onclick="showSection('photos')">Photos 📸</button>
+    <button onclick="showSection('story')">Our Story 💑</button>
+    <button onclick="punchEffect()">ঘুষি মারুন 👊</button>
+  </div>
 
-<!-- Buttons -->
-<button onclick="showSection('love')">Love 💖</button>
-<button onclick="showSection('miss')">Miss You 😢</button>
-<button onclick="showSection('promise')">Promise 🤝</button>
-<button onclick="showSection('quotes')">Love Quotes 🌹</button>
-<button onclick="showSection('photos')">Our Photos 📸</button>
-<button onclick="showSection('bio')">Our Story 👨‍❤️‍👨</button>
-<button onclick="showSection('bio')"আমাকে ঘুষি মারতে চাইলে ক্লিক করো> 👨‍❤️‍👨</button>
+  <div id="love" class="section">
+    <h2>I Love You 💙</h2>
+    <p style="font-size: 1.3rem;">"তুমি আমার জীবনের সেই আলো, যেটা অন্ধকারেও পথ দেখায়..."</p>
+  </div>
 
-<!-- Sections -->
+  <div id="miss" class="section">
+    <h2>I Miss You 😢</h2>
+    <p>"প্রতিটা মুহূর্তে তোমাকে মিস করি, যেন নিঃশ্বাসের মতো প্রয়োজন..."</p>
+  </div>
 
-<div id="love" class="section">
-  <h2>I Love You 💙</h2>
-  <p>তুমি আমার জীবনের সেই আলো, যেটা অন্ধকারেও পথ দেখায়...</p>
+  <div id="promise" class="section">
+    <h2>My Promise 🤝</h2>
+    <p>"আমি প্রতিজ্ঞা করছি, সবসময় তোমার পাশে থাকবো, আজীবন।"</p>
+  </div>
+
+  <div id="quotes" class="section">
+    <h2>Love Quotes 🌹</h2>
+    <p>🌹 তুমি আমার হৃদয়ের স্পন্দন, মাঝে মাঝে একটু বাড়িয়ে দাও আরকি!</p>
+    <p>🌙 তুমি আমার রাতের চাঁদ, সারা রাতের প্রশান্তি।</p>
+    <p>☀️ তুমি আমার ভোরের সূর্য, নতুন শুরুর প্রেরণা।</p>
+  </div>
+
+  <div id="photos" class="section">
+    <h2>Our Memories 📸</h2>
+    <img src="pic1.jpeg" width="200" alt="Memory 1">
+    <img src="pic2.jpeg" width="200" alt="Memory 2">
+    <img src="pic3.jpeg" width="200" alt="Memory 3">
+  </div>
+
+  <div id="story" class="section">
+    <div class="story-card">
+      <h2>Our Story 💑</h2>
+      <p><b>Name:</b> Bikash Das</p>
+      <p><b>Parents:</b> Subash & Chandana Rabi Das</p>
+      <p><b>Birthday:</b> 09 March 2003</p>
+      <hr>
+      <p><b>Name:</b> Anita Rani Das</p>
+      <p><b>Parents:</b> Rabi & Basanti Rani Das</p>
+      <p><b>Birthday:</b> 09 July 2004</p>
+      <hr>
+      <p style="text-align: center; font-size: 1.2rem;">
+        <b>Relationship Started:</b> 09 March 2023 <br>
+        <span style="color: #ff4d6d;">"যা আর কোনো দিন শেষ হবে না" 💖</span>
+      </p>
+    </div>
+  </div>
 </div>
 
-<div id="miss" class="section">
-  <h2>I Miss You 😢</h2>
-  <p>প্রতিটা মুহূর্তে তোমাকে মিস করি, যেন নিঃশ্বাসের মতো প্রয়োজন...</p>
-</div>
-
-<div id="promise" class="section">
-  <h2>My Promise 🤝</h2>
-  <p>আমি প্রতিজ্ঞা করছি, সবসময় তোমার পাশে থাকবো  সারাজীবন থাকব। ...</p>
-</div>
-
-<div id="quotes" class="section">
-  <h2>Love Quotes 🌹</h2>
-  <p>🌹 তুমি আমার হৃদয়ের স্পন্দন , কিন্তু মাঝে মাঝে বাড়িয়ে দাও আরকি </p>
-  <p>🌊 তুমি আমার জীবনের সমুদ্র</p>
-  <p>🌙 তুমি আমার রাতের চাঁদ</p>
-  <p>☀️ তুমি আমার সকালের সূর্য</p>
-</div>
-
-<div id="photos" class="section">
-  <h2>Our Memories 📸</h2>
-  <img src="pic1.jpeg" width="200">
-  <img src="pic2.jpeg" width="200">
-  <img src="pic3.jpeg" width="200">
-</div>
-
-<div id="bio" class="section">
-  <h2>Our Story 💑</h2>
-  <p><b>Name:</b> Bikash Das</p>
-  <p><b>Father:</b> Subash Rabi Das</p>
-  <p><b>Mother:</b> Chandana Rabi Das</p>
-  <p><b>Birthday:</b> 09 March 2003</p>
-
-  <hr>
-
-  <p><b>Name:</b> Anita Rani Das</p>
-  <p><b>Father:</b> Rabi Das</p>
-  <p><b>Mother:</b> Basanti Rani Das</p>
-  <p><b>Birthday:</b> 09 July 2004</p>
-
-  <hr>
-
-  <p><b>Relationship Started:</b> 09 March 2023 যা আর কোনো দিন শেষ হবে না।💖</p>
-</div>
-
-<!-- Music (Arijit Song Example) -->
-<iframe width="0" height="0"
-src="https://www.youtube.com/watch?v=4HRC6c5-2lQ&list=RD4HRC6c5-2lQ&start_radio=1"
-allow="autoplay">
-</iframe>
-
-</div>
+<iframe width="0" height="0" src="https://www.youtube.com/embed/4HRC6c5-2lQ?autoplay=1" frameborder="0" allow="autoplay"></iframe>
 
 <script>
-
-// typing
-const text = "You are my life, my happiness, my everything 💙";
-let i=0;
-function typing(){
-  if(i<text.length){
-    document.getElementById("typing").innerHTML += text.charAt(i);
-    i++;
-    setTimeout(typing,50);
+  // Typing Effect
+  const text = "You are my life, my happiness, my everything 💙";
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      document.getElementById("typing").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, 70);
+    }
   }
-}
-typing();
+  window.onload = typing;
 
-// section show
-function showSection(id){
-  let sections = document.querySelectorAll('.section');
-  sections.forEach(sec => sec.style.display="none");
-  document.getElementById(id).style.display="block";
-}
+  // Section Toggle
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(sec => sec.style.display = "none");
+    const target = document.getElementById(id);
+    target.style.display = "block";
+  }
+
+  // Punch Funny Effect
+  function punchEffect() {
+    alert("আউচ! অনিতা তোমাকে একটা ভার্চুয়াল ঘুষি মারলো! 😂👊");
+  }
+
+  // Floating Hearts Logic
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.innerHTML = '❤️';
+    heart.style.position = 'fixed';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.top = '100vh';
+    heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+    heart.style.opacity = Math.random();
+    heart.style.transition = 'transform 5s linear, opacity 5s';
+    
+    document.getElementById('heartContainer').appendChild(heart);
+
+    setTimeout(() => {
+      heart.style.transform = `translateY(-110vh) rotate(${Math.random() * 360}deg)`;
+      heart.style.opacity = '0';
+    }, 100);
+
+    setTimeout(() => heart.remove(), 6000);
+  }
+  setInterval(createHeart, 400);
 
 </script>
 
