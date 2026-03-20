@@ -2,102 +2,147 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For My Love Anita❤️</title>
+<title>Bikash ❤️ Anita</title>
 
 <style>
 body {
   margin:0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to right, #ff758c, #ff7eb3);
-  overflow:hidden;
+  background: linear-gradient(to right, #000000, #0f2027);
+  color: white;
   text-align:center;
-  color:white;
 }
 
 .container {
-  position: relative;
-  top: 30%;
+  padding: 30px;
 }
 
 h1 {
-  font-size: 50px;
-}
-
-#typing {
-  font-size: 22px;
-  margin-top: 20px;
+  font-size: 45px;
+  color:#00c6ff;
 }
 
 button {
-  margin-top: 30px;
-  padding: 15px 30px;
+  margin: 8px;
+  padding: 12px 20px;
   border:none;
-  border-radius: 25px;
-  background:white;
-  color:#ff4b5c;
-  font-size:18px;
+  border-radius: 20px;
+  background:#00c6ff;
+  color:black;
   cursor:pointer;
+  transition:0.3s;
+}
+button:hover {
+  background:white;
 }
 
-.heart {
-  position: absolute;
-  color: rgba(255,255,255,0.7);
-  font-size: 20px;
-  animation: float 6s linear infinite;
+img {
+  border-radius:15px;
+  margin:10px;
 }
 
-@keyframes float {
-  0% {transform: translateY(100vh);}
-  100% {transform: translateY(-10vh);}
+.section {
+  display:none;
+  margin-top:20px;
 }
+
 </style>
 </head>
 
 <body>
 
 <div class="container">
-  <h1>Hey My Love Anita❤️</h1>
-  <div id="typing"></div>
-  <button onclick="showLove()">Click for Surprise 🎁</button>
+
+<h1>Anita 💙</h1>
+<p id="typing"></p>
+
+<!-- Buttons -->
+<button onclick="showSection('love')">Love 💖</button>
+<button onclick="showSection('miss')">Miss You 😢</button>
+<button onclick="showSection('promise')">Promise 🤝</button>
+<button onclick="showSection('quotes')">Love Quotes 🌹</button>
+<button onclick="showSection('photos')">Our Photos 📸</button>
+<button onclick="showSection('bio')">Our Story 👨‍❤️‍👨</button>
+
+<!-- Sections -->
+
+<div id="love" class="section">
+  <h2>I Love You 💙</h2>
+  <p>তুমি আমার জীবনের সেই আলো, যেটা অন্ধকারেও পথ দেখায়...</p>
 </div>
 
-<audio autoplay loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
+<div id="miss" class="section">
+  <h2>I Miss You 😢</h2>
+  <p>প্রতিটা মুহূর্তে তোমাকে মিস করি, যেন নিঃশ্বাসের মতো প্রয়োজন...</p>
+</div>
+
+<div id="promise" class="section">
+  <h2>My Promise 🤝</h2>
+  <p>আমি প্রতিজ্ঞা করছি, সবসময় তোমার পাশে থাকবো...</p>
+</div>
+
+<div id="quotes" class="section">
+  <h2>Love Quotes 🌹</h2>
+  <p>🌹 তুমি আমার হৃদয়ের স্পন্দন</p>
+  <p>🌊 তুমি আমার জীবনের সমুদ্র</p>
+  <p>🌙 তুমি আমার রাতের চাঁদ</p>
+  <p>☀️ তুমি আমার সকালের সূর্য</p>
+</div>
+
+<div id="photos" class="section">
+  <h2>Our Memories 📸</h2>
+  <img src="pic1.jpg" width="200">
+  <img src="pic2.jpg" width="200">
+  <img src="pic3.jpg" width="200">
+</div>
+
+<div id="bio" class="section">
+  <h2>Our Story 💑</h2>
+  <p><b>Name:</b> Bikash Das</p>
+  <p><b>Father:</b> Subash Rabi Das</p>
+  <p><b>Mother:</b> Chandana Rabi Das</p>
+  <p><b>Birthday:</b> 09 March 2003</p>
+
+  <hr>
+
+  <p><b>Name:</b> Anita Rani Das</p>
+  <p><b>Father:</b> Rabi Das</p>
+  <p><b>Mother:</b> Basanti Rani Das</p>
+  <p><b>Birthday:</b> 09 July 2004</p>
+
+  <hr>
+
+  <p><b>Relationship Started:</b> 09 March 2023 💖</p>
+</div>
+
+<!-- Music (Arijit Song Example) -->
+<iframe width="0" height="0"
+src="https://www.youtube.com/embed/V7LwfY5U5WI?autoplay=1&loop=1&playlist=V7LwfY5U5WI"
+allow="autoplay">
+</iframe>
+
+</div>
 
 <script>
 
-// Typing Effect
-const text = "You are the most special person in my life 💖 I love you forever My love Anita...";
-let i = 0;
-
-function type() {
-  if (i < text.length) {
+// typing
+const text = "You are my life, my happiness, my everything 💙";
+let i=0;
+function typing(){
+  if(i<text.length){
     document.getElementById("typing").innerHTML += text.charAt(i);
     i++;
-    setTimeout(type, 50);
+    setTimeout(typing,50);
   }
 }
-type();
+typing();
 
-// Button Surprise
-function showLove() {
-  alert("I LOVE YOU SO MUCH ANITA❤️");
+// section show
+function showSection(id){
+  let sections = document.querySelectorAll('.section');
+  sections.forEach(sec => sec.style.display="none");
+  document.getElementById(id).style.display="block";
 }
-
-// Floating Hearts
-setInterval(() => {
-  let heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (Math.random()*20 + 10) + "px";
-  document.body.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 6000);
-}, 300);
 
 </script>
 
